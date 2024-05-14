@@ -1,0 +1,203 @@
+// del index se toma. .cabecera__container y se coloca el display, para ajustar el espacio de la cabecera de la pagina
+.cabecera__container{
+    display: flex;// Es necesario aplicar display: flex al contenedor padre de los elementos que deseas alinear con Flexbox.
+    //para que los elementos se alinene con el mismo espaciado 
+    justify-content: space-between;
+    //para despegar los elementos en el medio del container y que no este muy arriba de la pagina 
+    align-items: center;
+    //para que los paneles de navehcaion tambien quede fijo en la cabecera 
+    position: fixed;
+    top: 0; 
+}
+
+//para ocultar el campo de busqueda para los dispositivos móviles, en este caso se presenta en todos, para que solo aplique a los moviles se coloca @media()
+.cabecera__buscar__item{
+    display: none;
+}
+@media (min-width:834px){ significa que todo lo que colocamos dentro de las llaves en este caso corresponde al campo de busqueda solo se mostrará cuando los dispositivos tengan al menos 834 píxeles de espacio.
+
+    .cabecera__buscar__item{ para que aplique al campo de busqueda solo cuanod los dispositivos tienen al menos  834 px de ancho 
+        display: block
+    }
+}
+
+//ahora para hacer las modificaciones en el pie de pagina de coloca la clase
+.rodapie__container{
+    display: flex; // para que se modifiquen los elementos uno al lado del otro del rodapie 
+    flex-direction: column; para hacer que los lementos se distribuyan en una columna 
+    flex-wrap:wrap; nos ayuda a distribuir los elementos de la columna en varias columnas 
+    //estas se va a reducir a una linea de codigo el cual será//
+    flex-flow: column wrap;
+    
+
+}
+
+en @ media se agrega 
+.rodapie__container{
+justify-content: space-between;// para hacer que se ajusten los espacios de las columnas cada vez que se ajusta el tamaño de la pantalla 
+}
+// para hacer modificaciones en los elementos para las opciones de navegacion se toma la clase .superior__seccion__container
+
+.superior__seccion__container{
+    display: flex; // para que los elementos se encuentren alineados el uno al otro 
+    align-items: center; // para que se coloquen lo elementos al centro 
+    white-space: nowrap; // para que las palabras de los elementos no se dividan 
+    overflow:scroll; //para que aparezca una barra de deslizamiento debajo de los elementos 
+    gap:15px; para agregar espacios en cada uno de los elementos
+}
+
+// para colocar la barra al final de la pagina para los movile se va a llmar a la clase .menu__container
+.menu__container{
+    position: fixed;
+    bottom:0%;
+    height: 75px;   
+    width:100%;
+}
+
+//para organizar los elementos del contenedor final se va acolocar la clase
+.menu__lista{
+    display: flex; para que se coloquen los elementos uno al lado del otro, en este caso adjunta todas las listas que mantienen estas listas, por lo que se coloca la sig lineas de codigo para ocultar las listas que no queremos que aparezacan en ese body 
+    justify-content: space-around; para que los elementos tengan un espacio entre sí 
+    height: 100%; para que no esten muy arriba del body 
+}
+
+.menu__lista:nth-child(2),
+.menu__lista:nth-child(3),
+.menu__lista:nth-child(4){
+    display:none; 
+}
+
+//para alinear los elementos se va a colocar la classe 
+.menu__lista li{ se coloca li porque hace referencia a esos elementos 
+    align-self: center;  que va hacer que todos los items se alinen y centren en conjunto 
+}
+
+.menu__itens{
+    display:flex; para ajustar los textos de los elementos 
+    flex-direction: column; para que el texto se divida en dos columnas
+    gap: 5px; para que el texto de los elementos no esten muy juntos 
+}
+
+//para ajustar el tamaño para una tablet se coloca las sig lineas de codigo 
+
+* MENU LATERAL PARA PANTALLAS DE TABLETS */
+
+@media (min-width: 834px) {
+
+    .menu__container {
+        left: 0;
+        height: auto;
+        width: 74px;
+        top: 80px;
+    }
+    
+    .menu__lista {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 15px;
+        gap: 33px;
+    }
+    
+    }
+// se va ajustar el namú para dispositivos desktop con minimo 1440px de ancho se crean un @media 
+
+@media(min-width:1440px) para hacer referencia que solo aplique a a dispositivos con minimo esos px 
+
+.menu__container{
+    width:239px; para ampliar el ancho de la barra LATERAL
+    overflow: scroll; para ver el resto de las listas 
+    }
+    
+    .menu__lista:nth-child(2),
+    .menu__lista:nth-child(3),
+    .menu__lista:nth-child(4){
+         display:flex; para mostar las listas pero en este caso no se pueden ver porque las listas priemras estn ocupando el 100% del espacio, por lo que se agregan las sig lineas 
+    }
+    
+    .menu__lista{
+        height:auto; 
+        padding:20px 17px 20px 15px; para ajustar los espacios 
+        gap: 15px; para reducir el espacio entre uno y otro elemento 
+    }
+
+//para que el texto este al lado de los iconos se debe de poner la clase
+
+.menu__itens{
+    flex-direction:row; para que se coloque en linea el icono y texto 
+    gap: 15px, para que se separen de manera horizontal el texto del icono
+    align-items:center; para que el icono y texto esten en la misma altura, posicion, 
+}
+
+// para ordenar de manera correcta la ultima lista que se refiere a los nombres se va  crear una clase dentro de la ultima @media entre .menu_lista y .menu__itens, la cual se va a llamar 
+
+.menu__lista:nth-child(3){ se coloca el numero 3 para hacer referencia a la lista 
+    flex-direction: column-reverse;  para revertir el orden de los elementos
+}
+
+despues de la ultima clase .menu_items se coloca
+
+.videojuegos{
+    order:3; 
+}
+
+.peliculas{
+    order:2;
+
+}
+
+.premium{
+    order:1;
+}
+
+para que se coloquen los elementos en el orden que esta en el html 
+
+¡De esta manera, los elementos quedan de acuerdo con el objetivo propuesto! La propiedad order es un flex-item y debe aplicarse siempre a cada uno de los elementos que desees ordenar.
+
+//  para colocar los videos se coloca antes de la etiqueta  /* rodapie*/ .rodapie__container
+/*Seccion videos*/
+.videos__item{
+    height: 303px;
+    width:280px;
+    flex-grow:1; para eliminar el espacio en blanco que esta del lado derecho, con forme aumente o dismuyuna nos ayuda a aumentar o reducir más elemento en proporcion a al ancho que se etablecio 
+
+}
+
+// colocar estos codigos despues de /*seccion videos*/
+
+/* DESAFIO DESCRIPCIÓN DE LOS VIDEOS */ 
+
+.descripcion-video {
+    margin-top: 1rem;
+    display: flex;
+    align-items: start; 
+    
+}
+
+.descripcion-video img {
+    margin-right: 1rem; 
+    flex-shrink: 0;  /*  Evita que la imagen se reduzca */
+    
+}
+
+.detalles__video {
+    flex-direction: column;
+    text-align:left;
+
+}
+
+.detalles__video h3{
+    margin-bottom: 10px;
+}
+
+antes de estos codigos y despues de /*seccion videos*/ se coloca las sig lineas de codigo
+.videos__container{
+    display:flex; para que se alinen todos los videos de menta horizontal
+    flex-wrap: wrap; para que distribuyan todos los videos
+    gap:10px; para que se agregue un espacio entre cada uno de los videos 
+
+}
+
+nota se agrega en la clase /*Seccion videos*/
+.videos__item{
+flex-grow:1; para eliminar el espacio en blanco que esta del lado derecho, con forme aumente o dismuyuna nos ayuda a aumentar o reducir más elemento en proporcion a al ancho que se etablecio 
+}
